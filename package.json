@@ -1,0 +1,36 @@
+{
+  "name": "@hiogawa/vite-plugin-cjs",
+  "version": "0.0.1",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.mts"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --sourcemap --watch src"
+  },
+  "peerDependencies": {
+    "vite": "*"
+  },
+  "dependencies": {
+    "@hiogawa/utils": "^1.7.0",
+    "es-module-lexer": "^2.0.0",
+    "estree-walker": "^3.0.3",
+    "magic-string": "^0.30.21",
+    "periscopic": "^4.0.2",
+    "vitefu": "^1.1.1"
+  },
+  "devDependencies": {
+    "@tsconfig/strictest": "^2.0.5",
+    "@types/node": "^22.16.0",
+    "tsdown": "^0.17.4",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.0"
+  }
+}
