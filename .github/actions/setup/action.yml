@@ -1,0 +1,22 @@
+name: setup
+inputs:
+  build:
+    description: build
+    required: false
+    default: "true"
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-node@v6
+      with:
+        node-version: lts/*
+
+    - run: corepack enable
+      shell: bash
+
+    - run: pnpm i
+      shell: bash
+
+    - run: pnpm build
+      shell: bash
+      if: ${{ inputs.build == 'true' }}

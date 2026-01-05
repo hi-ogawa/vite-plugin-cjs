@@ -1,0 +1,15 @@
+name: release-commit
+"on":
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: ./.github/actions/setup
+        with:
+          build: false
+      - run: pnpm dlx pkg-pr-new publish --comment=off

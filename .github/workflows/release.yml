@@ -1,0 +1,23 @@
+name: release
+on:
+  push:
+    tags:
+      - "v*"
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    environment: release
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup
+      - run: pnpm dlx changelogithub
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: |
+          releaseTag=$([[ $GITHUB_REF_NAME =~ beta ]] && echo "beta" || echo "latest")
+          pnpm publish --access public --no-git-checks --tag $releaseTag
