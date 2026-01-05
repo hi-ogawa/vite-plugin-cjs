@@ -1,22 +1,26 @@
 {
   "name": "@hiogawa/vite-plugin-cjs",
   "version": "0.0.1",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "types": "./dist/index.d.mts"
-    }
+  "homepage": "https://github.com/hi-ogawa/vite-plugin-cjs",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hi-ogawa/vite-plugin-cjs.git"
   },
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "tsdown",
-    "dev": "tsdown --sourcemap --watch src"
+  "type": "module",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": "./dist/index.js"
   },
-  "peerDependencies": {
-    "vite": "*"
+  "scripts": {
+    "dev": "tsdown --sourcemap --watch src",
+    "build": "tsdown",
+    "prepack": "tsdown --clean",
+    "tsc": "tsc -b",
+    "release": "bumpp"
   },
   "dependencies": {
     "@hiogawa/utils": "^1.7.0",
@@ -27,10 +31,16 @@
     "vitefu": "^1.1.1"
   },
   "devDependencies": {
-    "@tsconfig/strictest": "^2.0.5",
+    "@tsconfig/strictest": "^2.0.8",
+    "@types/estree": "^1.0.8",
     "@types/node": "^22.16.0",
-    "tsdown": "^0.17.4",
-    "typescript": "^5.8.3",
+    "bumpp": "^10.3.2",
+    "tsdown": "^0.18.2",
+    "typescript": "^5.9.3",
     "vite": "^6.3.0"
-  }
+  },
+  "peerDependencies": {
+    "vite": "*"
+  },
+  "packageManager": "pnpm@10.26.1+sha512.664074abc367d2c9324fdc18037097ce0a8f126034160f709928e9e9f95d98714347044e5c3164d65bd5da6c59c6be362b107546292a8eecb7999196e5ce58fa"
 }

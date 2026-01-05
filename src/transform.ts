@@ -1,4 +1,5 @@
 import type { Program, Node } from 'estree'
+import type {} from './estree'
 import MagicString from 'magic-string'
 import { analyze } from 'periscopic'
 import { walk } from 'estree-walker'

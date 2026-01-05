@@ -1,14 +1,11 @@
 {
-  "extends": "@tsconfig/strictest/tsconfig.json",
+  "extends": "./tsconfig.base.json",
+  "include": ["src", "*.ts"],
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
-    "verbatimModuleSyntax": true,
+    "allowImportingTsExtensions": true,
+    "noPropertyAccessFromIndexSignature": false,
+    "checkJs": false,
     "declaration": true,
-    "isolatedDeclarations": true,
-    "noEmit": true,
-    "skipLibCheck": true
-  },
-  "include": ["src"]
+    "isolatedDeclarations": true
+  }
 }
